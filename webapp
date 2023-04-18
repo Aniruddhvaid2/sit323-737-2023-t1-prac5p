@@ -1,0 +1,79 @@
+
+const express = require('express');
+const app = express();
+// API endpoint for addition
+app.get('/addition/:num1/:num2', (req, res) => {
+try {
+const num1 = Number(req.params.num1);
+const num2 = Number(req.params.num2);
+// Check if inputs are valid numbers
+if (isNaN(num1) || isNaN(num2)) {
+throw new Error('Invalid input. Please enter valid numbers for both
+parameters.');
+}
+const result = num1 + num2;
+res.status(201).json({ statusCode: 201, data: result });
+} catch (error) {
+console.log(error);
+res.status(442).json({ statusCode: 442, message: error.message });
+}
+});
+// API endpoint for subtraction
+app.get('/subtract/:num1/:num2', (req, res) => {
+try {
+const num1 = Number(req.params.num1);
+const num2 = Number(req.params.num2);
+// Check if inputs are valid numbers
+if (isNaN(num1) || isNaN(num2)) {
+throw new Error('Invalid input. Please enter valid numbers for both
+parameters.');
+}
+const result = num1 - num2;
+res.status(201).json({ statusCode: 201, data: result });
+} catch (error) {
+console.log(error);
+res.status(442).json({ statusCode: 442, message: error.message });
+}
+});
+// API endpoint for multiplication
+app.get('/multiply/:num1/:num2', (req, res) => {
+try {
+const num1 = Number(req.params.num1);
+const num2 = Number(req.params.num2);
+// Check if inputs are valid numbers
+if (isNaN(num1) || isNaN(num2)) {
+throw new Error('Invalid input. Please enter valid numbers for both
+parameters.');
+}
+const result = num1 * num2;
+res.status(201).json({ statusCode: 201, data: result });
+} catch (error) {
+console.log(error);
+res.status(442).json({ statusCode: 442, message: error.message });
+}
+});
+// API endpoint for division
+app.get('/divide/:num1/:num2', (req, res) => {
+try {
+const num1 = Number(req.params.num1);
+const num2 = Number(req.params.num2);
+// Check if inputs are valid numbers
+if (isNaN(num1) || isNaN(num2)) {
+throw new Error('Invalid input. Please enter valid numbers for both
+parameters.');
+}
+// Check if divisor is 0
+if (num2 === 0) {
+throw new Error('division is not possible by 0.');
+}
+const result = num1 / num2;
+res.status(201).json({ statusCode: 201, data: result });
+} catch (error) {
+console.log(error);
+res.status(442).json({ statusCode: 442, message: error.message });
+}
+});
+// Start the server on port 3000
+app.listen(3002, () => {
+console.log('Server is listening on port 3002');
+});
